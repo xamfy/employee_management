@@ -1,0 +1,6 @@
+Flask
+Flask-SQLAlchemy
+pytest
+pytest-mock
+python-dotenv
+psycopg2
