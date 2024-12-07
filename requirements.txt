@@ -3,4 +3,4 @@ Flask-SQLAlchemy
 pytest
 pytest-mock
 python-dotenv
-psycopg2
+psycopg2-binary

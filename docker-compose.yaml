@@ -1,0 +1,37 @@
+version: "3.8"
+
+services:
+  # Flask application service
+  web:
+    build: .
+    container_name: employee_management_web
+    ports:
+      - "5000:5000"
+    environment:
+      - DATABASE_URL=postgresql://employee_user:employee_password@db:5432/employee_db
+      - FLASK_ENV=development
+      - SECRET_KEY=your_secret_key
+    depends_on:
+      - db
+    networks:
+      - employee_network
+
+  # PostgreSQL database service
+  db:
+    image: postgres:14
+    container_name: employee_management_db
+    environment:
+      - POSTGRES_DB=employee_db
+      - POSTGRES_USER=employee_user
+      - POSTGRES_PASSWORD=employee_password
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    networks:
+      - employee_network
+
+volumes:
+  postgres_data:
+
+networks:
+  employee_network:
+    driver: bridge
