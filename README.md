@@ -145,7 +145,11 @@ Please import the `employee_management_api.postman_collection.json` file present
 **Request**:
 ```json
 {
-  "department": "HR"
+    "date_joined": "2024-12-01",
+    "department": "HR",
+    "email": "john.doe@example.com",
+    "id": 1,
+    "name": "John Doe"
 }
 ```
 
