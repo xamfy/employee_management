@@ -12,7 +12,7 @@ app.config.from_object(Config)
 db.init_app(app)
 
 # Register routes
-app.register_blueprint(employee_bp)
+app.register_blueprint(employee_bp, url_prefix='/employees')
 
 # Global error handlers
 @app.errorhandler(ValidationError)
@@ -29,6 +29,7 @@ def handle_database_error(error):
 
 @app.errorhandler(Exception)
 def handle_generic_error(error):
+    app.logger.error(f"Server Error: {error}")
     return jsonify({"error": "An unexpected error occurred."}), 500
 
 if __name__ == "__main__":
