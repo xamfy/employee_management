@@ -60,7 +60,21 @@ Run unit tests for the application:
 pytest
 ```
 
+## Running via Docker Compose
+Run the following command in the project root to build and start both the application and the PostgreSQL database:
+```bash
+docker-compose up --build
+```
+
+To stop all the containers:
+```bash
+docker-compose down
+```
+
+
 ## API Endpoints
+
+Please import the `employee_management_api.postman_collection.json` file present in the project in your postman client.
 
 ### POST `/employees`
 **Description**: Add a new employee.

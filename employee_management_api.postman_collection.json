@@ -1,0 +1,139 @@
+{
+    "info": {
+      "name": "Employee Management System API",
+      "description": "Postman collection for all the API endpoints of Employee Management System",
+      "_postman_id": "f3bb8a67-9098-44b4-9d7c-bd7a659f1a9f",
+      "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+    },
+    "item": [
+      {
+        "name": "Create Employee",
+        "request": {
+          "method": "POST",
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "body": {
+            "mode": "raw",
+            "raw": "{\"name\": \"John Doe\", \"email\": \"john.doe@example.com\", \"department\": \"Engineering\", \"date_joined\": \"2024-12-01\"}"
+          },
+          "url": {
+            "raw": "http://127.0.0.1:5000/employees",
+            "protocol": "http",
+            "host": [
+              "127",
+              "0",
+              "0",
+              "1"
+            ],
+            "port": "5000",
+            "path": [
+              "employees"
+            ]
+          }
+        },
+        "response": []
+      },
+      {
+        "name": "Get All Employees",
+        "request": {
+          "method": "GET",
+          "url": {
+            "raw": "http://127.0.0.1:5000/employees",
+            "protocol": "http",
+            "host": [
+              "127",
+              "0",
+              "0",
+              "1"
+            ],
+            "port": "5000",
+            "path": [
+              "employees"
+            ]
+          }
+        },
+        "response": []
+      },
+      {
+        "name": "Get Employee By ID",
+        "request": {
+          "method": "GET",
+          "url": {
+            "raw": "http://127.0.0.1:5000/employees/:id",
+            "protocol": "http",
+            "host": [
+              "127",
+              "0",
+              "0",
+              "1"
+            ],
+            "port": "5000",
+            "path": [
+              "employees",
+              ":id"
+            ]
+          }
+        },
+        "response": []
+      },
+      {
+        "name": "Update Employee",
+        "request": {
+          "method": "PUT",
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "body": {
+            "mode": "raw",
+            "raw": "{\"department\": \"HR\"}"
+          },
+          "url": {
+            "raw": "http://127.0.0.1:5000/employees/:id",
+            "protocol": "http",
+            "host": [
+              "127",
+              "0",
+              "0",
+              "1"
+            ],
+            "port": "5000",
+            "path": [
+              "employees",
+              ":id"
+            ]
+          }
+        },
+        "response": []
+      },
+      {
+        "name": "Delete Employee",
+        "request": {
+          "method": "DELETE",
+          "url": {
+            "raw": "http://127.0.0.1:5000/employees/:id",
+            "protocol": "http",
+            "host": [
+              "127",
+              "0",
+              "0",
+              "1"
+            ],
+            "port": "5000",
+            "path": [
+              "employees",
+              ":id"
+            ]
+          }
+        },
+        "response": []
+      }
+    ]
+  }
+  
