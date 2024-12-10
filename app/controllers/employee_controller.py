@@ -12,19 +12,33 @@ def add_employee():
 @employee_bp.route("/", methods=["GET"])
 def get_employees():
     employees = EmployeeService.get_employees()
-    # Handle cases where employees are dictionaries or objects
+    
+    # Serialize SQLAlchemy model instances to dictionaries
     return jsonify([
-        emp if isinstance(emp, dict) else emp.__dict__ for emp in employees
+        serialize_employee(emp) if isinstance(emp, object) else emp for emp in employees
     ]), 200
+
+
+# Helper function to convert SQLAlchemy model instances to dictionaries
+def serialize_employee(emp):
+    return {
+        "id": emp.id,
+        "name": emp.name,
+        "email": emp.email,
+        "department": emp.department,
+        "date_joined": emp.date_joined.isoformat()  # Format date as string
+    }
 
 @employee_bp.route("/<int:employee_id>", methods=["GET"])
 def get_employee(employee_id):
     employee = EmployeeService.get_employee(employee_id)
-    # Check if the object is already a dictionary
+    
+    # If employee is a dictionary, return it directly
     if isinstance(employee, dict):
         return jsonify(employee), 200
-    # Otherwise, convert to a dictionary (for actual Employee objects)
-    return jsonify(employee.__dict__), 200
+    
+    # Otherwise, serialize the Employee object manually
+    return jsonify(serialize_employee(employee)), 200
 
 
 @employee_bp.route("/<int:employee_id>", methods=["PUT"])
