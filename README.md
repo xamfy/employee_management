@@ -59,3 +59,97 @@ Run unit tests for the application:
 ```bash
 pytest
 ```
+
+## API Endpoints
+
+### POST `/employees`
+**Description**: Add a new employee.
+
+**Request**:
+```json
+{
+  "name": "John Doe",
+  "email": "john.doe@example.com",
+  "department": "Engineering",
+  "date_joined": "2024-12-01"
+}
+```
+
+**Response**:
+```json
+{
+  "message": "Employee added successfully"
+}
+```
+
+---
+
+### GET `/employees`
+**Description**: Retrieve all employees.
+
+**Response**:
+```json
+[
+  {
+    "id": 1,
+    "name": "John Doe",
+    "email": "john.doe@example.com",
+    "department": "Engineering",
+    "date_joined": "2024-12-01"
+  },
+  {
+    "id": 2,
+    "name": "Jane Smith",
+    "email": "jane.smith@example.com",
+    "department": "HR",
+    "date_joined": "2024-01-15"
+  }
+]
+```
+
+---
+
+### GET `/employees/{id}`
+**Description**: Retrieve a specific employee by ID.
+
+**Response**:
+```json
+{
+  "id": 1,
+  "name": "John Doe",
+  "email": "john.doe@example.com",
+  "department": "Engineering",
+  "date_joined": "2024-12-01"
+}
+```
+
+---
+
+### PUT `/employees/{id}`
+**Description**: Update an employee's information.
+
+**Request**:
+```json
+{
+  "department": "HR"
+}
+```
+
+**Response**:
+```json
+{
+  "message": "Employee updated successfully"
+}
+```
+
+---
+
+### DELETE `/employees/{id}`
+**Description**: Remove an employee.
+
+**Response**:
+```json
+{
+  "message": "Employee deleted successfully"
+}
+```
