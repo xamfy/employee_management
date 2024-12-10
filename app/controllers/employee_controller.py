@@ -12,12 +12,20 @@ def add_employee():
 @employee_bp.route("/", methods=["GET"])
 def get_employees():
     employees = EmployeeService.get_employees()
-    return jsonify([employee.__dict__ for employee in employees]), 200
+    # Handle cases where employees are dictionaries or objects
+    return jsonify([
+        emp if isinstance(emp, dict) else emp.__dict__ for emp in employees
+    ]), 200
 
 @employee_bp.route("/<int:employee_id>", methods=["GET"])
 def get_employee(employee_id):
     employee = EmployeeService.get_employee(employee_id)
+    # Check if the object is already a dictionary
+    if isinstance(employee, dict):
+        return jsonify(employee), 200
+    # Otherwise, convert to a dictionary (for actual Employee objects)
     return jsonify(employee.__dict__), 200
+
 
 @employee_bp.route("/<int:employee_id>", methods=["PUT"])
 def update_employee(employee_id):
